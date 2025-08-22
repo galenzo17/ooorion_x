@@ -39,17 +39,17 @@ export const CryptoListItem = ({ asset }: CryptoListItemProps) => {
           {getCryptoIcon(asset.symbol)}
         </div>
         <div>
-          <h3 className="font-medium text-gray-900">{asset.name}</h3>
-          <p className="text-xs text-gray-500">{asset.balance.toFixed(4)} {asset.symbol}</p>
+          <h3 className="font-semibold text-base text-gray-900">{asset.name}</h3>
+          <p className="text-sm text-gray-500">{asset.balance.toFixed(4)} {asset.symbol}</p>
         </div>
       </div>
       
       {/* Right Column */}
       <div className="text-right">
-        <p className="font-semibold text-gray-900">
+        <p className="font-bold text-lg text-gray-900">
           ${asset.value.toLocaleString()}
         </p>
-        <p className={`text-xs font-medium ${isPositive ? 'text-green-600' : 'text-red-600'}`}>
+        <p className={`text-sm font-semibold ${isPositive ? 'text-green-600' : 'text-red-600'}`}>
           {isPositive ? '+' : ''}{asset.changePercent24h.toFixed(2)}%
         </p>
       </div>

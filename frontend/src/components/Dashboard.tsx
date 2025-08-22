@@ -40,7 +40,7 @@ export const Dashboard = () => {
           <div>
             <div className="bg-white border border-gray-200">
               <div className="p-6 border-b border-gray-200">
-                <h3 className="text-lg font-medium text-gray-900">Tus Criptomonedas</h3>
+                <h3 className="text-xl font-semibold text-gray-900">Tus Criptomonedas</h3>
               </div>
               
               {isLoading ? (

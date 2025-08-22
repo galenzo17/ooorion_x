@@ -28,21 +28,21 @@ export const PortfolioOverview = ({ summary, isLoading }: PortfolioOverviewProps
           <BarChart3 className="w-6 h-6 text-blue-600" />
         </div>
         <div>
-          <h2 className="text-lg font-medium text-gray-900">Mi Resumen</h2>
+          <h2 className="text-xl font-semibold text-gray-900">Mi Resumen</h2>
           <p className="text-sm text-gray-500">Portfolio general</p>
         </div>
       </div>
       
       <div className="space-y-4">
         <div className="flex items-center justify-between">
-          <span className="text-sm text-gray-600">Valor Total</span>
-          <span className="text-xl font-semibold text-gray-900">
+          <span className="text-base text-gray-600 font-medium">Valor Total</span>
+          <span className="text-2xl font-bold text-gray-900">
             ${summary.totalValue.toLocaleString()}
           </span>
         </div>
         
         <div className="flex items-center justify-between">
-          <span className="text-sm text-gray-600">Cambio 24h</span>
+          <span className="text-base text-gray-600 font-medium">Cambio 24h</span>
           <div className="flex items-center space-x-1">
             {isPositive ? (
               <TrendingUp className="w-4 h-4 text-green-500" />
@@ -56,8 +56,8 @@ export const PortfolioOverview = ({ summary, isLoading }: PortfolioOverviewProps
         </div>
         
         <div className="flex items-center justify-between">
-          <span className="text-sm text-gray-600">Total Assets</span>
-          <span className="text-sm font-medium text-gray-900">
+          <span className="text-base text-gray-600 font-medium">Total Assets</span>
+          <span className="text-base font-semibold text-gray-900">
             {summary.totalAssets}
           </span>
         </div>
