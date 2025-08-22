@@ -35,7 +35,7 @@ export const CryptoListItem = ({ asset }: CryptoListItemProps) => {
     <div className="grid grid-cols-2 gap-6 p-6 border-b border-gray-100 last:border-b-0">
       {/* Left Column */}
       <div className="flex items-center space-x-4">
-        <div className={`w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-base font-bold ${getCryptoColor(asset.symbol)}`}>
+        <div className={`w-10 h-10 bg-gray-100 flex items-center justify-center text-base font-bold ${getCryptoColor(asset.symbol)}`}>
           {getCryptoIcon(asset.symbol)}
         </div>
         <div>

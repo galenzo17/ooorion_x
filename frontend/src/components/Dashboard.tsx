@@ -49,15 +49,15 @@ export const Dashboard = () => {
                     <div key={i} className="p-6 animate-pulse">
                       <div className="flex items-center justify-between">
                         <div className="flex items-center space-x-3">
-                          <div className="w-8 h-8 bg-gray-200 rounded-full"></div>
+                          <div className="w-8 h-8 bg-gray-200"></div>
                           <div>
-                            <div className="h-4 bg-gray-200 rounded w-20 mb-1"></div>
-                            <div className="h-3 bg-gray-200 rounded w-16"></div>
+                            <div className="h-4 bg-gray-200 w-20 mb-1"></div>
+                            <div className="h-3 bg-gray-200 w-16"></div>
                           </div>
                         </div>
                         <div className="text-right">
-                          <div className="h-4 bg-gray-200 rounded w-16 mb-1"></div>
-                          <div className="h-3 bg-gray-200 rounded w-12"></div>
+                          <div className="h-4 bg-gray-200 w-16 mb-1"></div>
+                          <div className="h-3 bg-gray-200 w-12"></div>
                         </div>
                       </div>
                     </div>
