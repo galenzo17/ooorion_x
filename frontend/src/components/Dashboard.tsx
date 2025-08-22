@@ -25,9 +25,9 @@ export const Dashboard = () => {
     <div className="min-h-screen bg-gray-50">
       <Header />
       
-      <main className="w-full px-6 py-8">
+      <main className="w-full px-8 py-10">
         {/* Main Content - 2 Column Layout like OrionX */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
           {/* Left Column - Portfolio Overview */}
           <div>
             <PortfolioOverview 
