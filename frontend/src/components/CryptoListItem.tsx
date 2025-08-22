@@ -47,7 +47,7 @@ export const CryptoListItem = ({ asset }: CryptoListItemProps) => {
       {/* Right Column */}
       <div className="text-right">
         <p className="font-bold text-lg text-gray-900">
-          ${asset.value.toLocaleString()}
+          ${asset.value.toLocaleString()} CLP
         </p>
         <p className={`text-sm font-semibold ${isPositive ? 'text-green-600' : 'text-red-600'}`}>
           {isPositive ? '+' : ''}{asset.changePercent24h.toFixed(2)}%

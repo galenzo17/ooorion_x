@@ -10,16 +10,16 @@ interface CryptoCarouselItem {
 
 export const CryptoCarousel = () => {
   const cryptos: CryptoCarouselItem[] = [
-    { symbol: 'ETH', name: 'Ether', price: 0.0000, icon: 'Ξ', color: 'text-blue-500' },
+    { symbol: 'ETH', name: 'Ether', price: 0.0000, icon: 'Ξ', color: 'text-purple-600' },
     { symbol: 'BNB', name: 'Binance Coin', price: 0.00, icon: 'BNB', color: 'text-yellow-500' },
     { symbol: 'LTC', name: 'Litecoin', price: 0.00, icon: 'Ł', color: 'text-gray-500' },
-    { symbol: 'XLM', name: 'Stellar Lumens', price: 0.00, icon: 'XLM', color: 'text-blue-400' },
-    { symbol: 'DASH', name: 'Dash', price: 0.00, icon: 'DASH', color: 'text-blue-600' },
-    { symbol: 'EOS', name: 'EOS', price: 0.00, icon: 'EOS', color: 'text-gray-700' },
+    { symbol: 'XLM', name: 'Stellar Lumens', price: 0.00, icon: '⚡', color: 'text-blue-400' },
+    { symbol: 'DASH', name: 'Dash', price: 0.00, icon: 'D', color: 'text-blue-600' },
+    { symbol: 'EOS', name: 'EOS', price: 0.00, icon: 'E', color: 'text-black' },
   ];
 
   return (
-    <div className="bg-gray-100 border-b border-gray-200 py-4">
+    <div className="bg-gray-200 border-b border-gray-300 py-4">
       <div className="w-full px-8">
         <div className="flex items-center space-x-1">
           <button className="p-1 hover:bg-gray-200">
