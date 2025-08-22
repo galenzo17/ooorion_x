@@ -43,59 +43,60 @@ export class DatabaseService implements OnModuleInit {
     const existingAssets = await this.db.select().from(schema.assets);
     
     if (existingAssets.length === 0) {
+      // Precios en pesos chilenos (CLP) - aproximados 
       const initialAssets: schema.NewAsset[] = [
         {
           symbol: 'BTC',
           name: 'Bitcoin',
           balance: 0.5,
-          price: 67500,
-          value: 33750,
-          change24h: 1250,
+          price: 67500000, // ~67.5M CLP
+          value: 33750000,
+          change24h: 1250000,
           changePercent24h: 1.85,
         },
         {
           symbol: 'ETH',
           name: 'Ethereum',
           balance: 2.3,
-          price: 3850,
-          value: 8855,
-          change24h: -120,
+          price: 3850000, // ~3.85M CLP
+          value: 8855000,
+          change24h: -120000,
           changePercent24h: -1.35,
         },
         {
           symbol: 'BNB',
           name: 'Binance Coin',
           balance: 5.7,
-          price: 620,
-          value: 3534,
-          change24h: 85,
+          price: 620000, // ~620K CLP
+          value: 3534000,
+          change24h: 85000,
           changePercent24h: 2.46,
         },
         {
           symbol: 'SOL',
           name: 'Solana',
           balance: 12.4,
-          price: 180,
-          value: 2232,
-          change24h: -45,
+          price: 180000, // ~180K CLP
+          value: 2232000,
+          change24h: -45000,
           changePercent24h: -1.98,
         },
         {
           symbol: 'ADA',
           name: 'Cardano',
           balance: 850,
-          price: 0.85,
-          value: 722.5,
-          change24h: 12.5,
+          price: 850, // ~850 CLP
+          value: 722500,
+          change24h: 12500,
           changePercent24h: 1.76,
         },
         {
           symbol: 'DOT',
           name: 'Polkadot',
           balance: 45,
-          price: 12.3,
-          value: 553.5,
-          change24h: -8.2,
+          price: 12300, // ~12.3K CLP
+          value: 553500,
+          change24h: -8200,
           changePercent24h: -1.46,
         },
       ];
