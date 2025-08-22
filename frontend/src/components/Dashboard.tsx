@@ -1,7 +1,7 @@
 import { usePortfolio } from '../hooks/usePortfolio';
 import { Header } from './Header';
 import { PortfolioOverview } from './PortfolioOverview';
-import { CryptoCard } from './CryptoCard';
+import { CryptoListItem } from './CryptoListItem';
 import { PortfolioChart } from './PortfolioChart';
 
 export const Dashboard = () => {
@@ -36,25 +36,37 @@ export const Dashboard = () => {
 
         {/* Main Content Grid */}
         <div className="grid grid-cols-1 xl:grid-cols-3 gap-8 mb-8">
-          {/* Crypto Cards Section */}
+          {/* Crypto List Section */}
           <div className="xl:col-span-2">
-            <div className="bg-white rounded-xl p-6 shadow-sm border">
-              <h3 className="text-lg font-semibold text-gray-900 mb-6">Tus Criptomonedas</h3>
+            <div className="bg-white border border-gray-200">
+              <div className="p-4 border-b border-gray-200">
+                <h3 className="text-lg font-medium text-gray-900">Tus Criptomonedas</h3>
+              </div>
               
               {isLoading ? (
-                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
+                <div className="divide-y divide-gray-100">
                   {Array.from({ length: 6 }).map((_, i) => (
-                    <div key={i} className="animate-pulse text-center">
-                      <div className="w-16 h-16 bg-gray-200 rounded-full mx-auto mb-3"></div>
-                      <div className="h-4 bg-gray-200 rounded mb-2"></div>
-                      <div className="h-3 bg-gray-200 rounded"></div>
+                    <div key={i} className="p-4 animate-pulse">
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center space-x-3">
+                          <div className="w-8 h-8 bg-gray-200 rounded-full"></div>
+                          <div>
+                            <div className="h-4 bg-gray-200 rounded w-20 mb-1"></div>
+                            <div className="h-3 bg-gray-200 rounded w-16"></div>
+                          </div>
+                        </div>
+                        <div className="text-right">
+                          <div className="h-4 bg-gray-200 rounded w-16 mb-1"></div>
+                          <div className="h-3 bg-gray-200 rounded w-12"></div>
+                        </div>
+                      </div>
                     </div>
                   ))}
                 </div>
               ) : (
-                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
+                <div>
                   {portfolioData?.assets.map((asset) => (
-                    <CryptoCard key={asset.symbol} asset={asset} />
+                    <CryptoListItem key={asset.symbol} asset={asset} />
                   ))}
                 </div>
               )}
