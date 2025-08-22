@@ -28,10 +28,10 @@ export const Dashboard = () => {
       <Header />
       <CryptoCarousel />
       
-      <main className="w-full px-8 py-10">
-        {/* Main Content - 2 Column Layout like OrionX */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
-          {/* Left Column - Portfolio Overview */}
+      <main className="w-full px-8 py-6">
+        {/* Two Column Layout exactly like OrionX */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          {/* Left Column - Mi Resumen */}
           <div>
             <PortfolioOverview 
               summary={portfolioData?.summary} 
@@ -39,40 +39,19 @@ export const Dashboard = () => {
             />
           </div>
 
-          {/* Right Column - Crypto List */}
+          {/* Right Column - Billeteras */}
           <div>
-            <div className="bg-white border border-gray-300">
-              <div className="p-6 border-b border-gray-300">
-                <h3 className="text-xl font-semibold text-gray-900">Tus Criptomonedas</h3>
+            <div className="bg-white border border-gray-300 h-64">
+              <div className="p-4 border-b border-gray-300">
+                <h3 className="text-base font-semibold text-gray-900">Billeteras</h3>
               </div>
               
-              {isLoading ? (
-                <div className="divide-y divide-gray-100">
-                  {Array.from({ length: 6 }).map((_, i) => (
-                    <div key={i} className="p-6 animate-pulse">
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center space-x-3">
-                          <div className="w-8 h-8 bg-gray-200"></div>
-                          <div>
-                            <div className="h-4 bg-gray-200 w-20 mb-1"></div>
-                            <div className="h-3 bg-gray-200 w-16"></div>
-                          </div>
-                        </div>
-                        <div className="text-right">
-                          <div className="h-4 bg-gray-200 w-16 mb-1"></div>
-                          <div className="h-3 bg-gray-200 w-12"></div>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
+              <div className="flex items-center justify-center h-48">
+                <div className="text-center">
+                  <div className="w-16 h-16 border-4 border-gray-300 border-t-gray-500 rounded-full animate-spin mx-auto mb-4"></div>
+                  <p className="text-sm text-gray-500">Cargando billeteras...</p>
                 </div>
-              ) : (
-                <div>
-                  {portfolioData?.assets.map((asset) => (
-                    <CryptoListItem key={asset.symbol} asset={asset} />
-                  ))}
-                </div>
-              )}
+              </div>
             </div>
           </div>
         </div>

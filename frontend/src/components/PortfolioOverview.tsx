@@ -1,5 +1,5 @@
 import type { PortfolioSummary } from '../types/portfolio';
-import { BarChart3, TrendingUp, TrendingDown } from 'lucide-react';
+import { BarChart3 } from 'lucide-react';
 
 interface PortfolioOverviewProps {
   summary?: PortfolioSummary;
@@ -9,57 +9,31 @@ interface PortfolioOverviewProps {
 export const PortfolioOverview = ({ summary, isLoading }: PortfolioOverviewProps) => {
   if (isLoading) {
     return (
-      <div className="bg-white rounded-xl p-8 shadow-sm border">
-        <div className="flex items-center justify-center h-32">
-          <div className="animate-pulse text-gray-400">Cargando resumen...</div>
+      <div className="bg-blue-50 border border-blue-200 h-64 flex items-center justify-center">
+        <div className="text-center">
+          <BarChart3 className="w-12 h-12 text-blue-400 mx-auto mb-2" />
+          <div className="text-sm text-blue-600">Cargando resumen...</div>
         </div>
       </div>
     );
   }
 
-  if (!summary) return null;
-
-  const isPositive = summary.totalChangePercent24h >= 0;
-
   return (
-    <div className="bg-white border border-gray-300 p-8">
-      <div className="flex items-center space-x-4 mb-6">
-        <div className="w-12 h-12 bg-blue-100 flex items-center justify-center">
-          <BarChart3 className="w-6 h-6 text-blue-600" />
-        </div>
-        <div>
-          <h2 className="text-xl font-semibold text-gray-900">Mi Resumen</h2>
-          <p className="text-sm text-gray-500">Portfolio general</p>
-        </div>
+    <div className="bg-blue-50 border border-blue-200 h-64">
+      <div className="p-4 border-b border-blue-200">
+        <h3 className="text-base font-semibold text-gray-900">Mi Resumen</h3>
       </div>
       
-      <div className="space-y-4">
-        <div className="flex items-center justify-between">
-          <span className="text-base text-gray-600 font-medium">Valor Total</span>
-          <span className="text-2xl font-bold text-gray-900">
-            ${summary.totalValue.toLocaleString()}
-          </span>
-        </div>
-        
-        <div className="flex items-center justify-between">
-          <span className="text-base text-gray-600 font-medium">Cambio 24h</span>
-          <div className="flex items-center space-x-1">
-            {isPositive ? (
-              <TrendingUp className="w-4 h-4 text-green-500" />
-            ) : (
-              <TrendingDown className="w-4 h-4 text-red-500" />
-            )}
-            <span className={`text-sm font-medium ${isPositive ? 'text-green-600' : 'text-red-600'}`}>
-              {isPositive ? '+' : ''}{summary.totalChangePercent24h.toFixed(2)}%
-            </span>
+      <div className="p-6 flex flex-col items-center justify-center h-48">
+        <div className="text-center">
+          <div className="w-16 h-16 bg-blue-100 border border-blue-300 flex items-center justify-center mb-4">
+            <BarChart3 className="w-8 h-8 text-blue-600" />
           </div>
-        </div>
-        
-        <div className="flex items-center justify-between">
-          <span className="text-base text-gray-600 font-medium">Total Assets</span>
-          <span className="text-base font-semibold text-gray-900">
-            {summary.totalAssets}
-          </span>
+          <p className="text-sm text-gray-600 mb-2">Para empezar a operar dentro de la plataforma, necesitamos validar</p>
+          <p className="text-sm text-gray-600 mb-4">y habilitar tu cuenta.</p>
+          <button className="bg-blue-600 text-white px-6 py-2 text-sm font-medium hover:bg-blue-700">
+            Verificar cuenta
+          </button>
         </div>
       </div>
     </div>
