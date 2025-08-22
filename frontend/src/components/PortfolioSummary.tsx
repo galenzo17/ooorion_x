@@ -1,5 +1,5 @@
 import { TrendingUp, TrendingDown, Wallet, DollarSign } from 'lucide-react';
-import { PortfolioSummary as PortfolioSummaryType } from '../types/portfolio';
+import type { PortfolioSummary as PortfolioSummaryType } from '../types/portfolio';
 
 interface PortfolioSummaryProps {
   summary: PortfolioSummaryType;

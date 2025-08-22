@@ -1,5 +1,5 @@
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
-import { PriceHistoryPoint } from '../types/portfolio';
+import type { PriceHistoryPoint } from '../types/portfolio';
 
 interface PortfolioChartProps {
   data: PriceHistoryPoint[];

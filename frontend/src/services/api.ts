@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { PortfolioData } from '../types/portfolio';
+import type { PortfolioData } from '../types/portfolio';
 
 const API_BASE_URL = 'http://localhost:3001';
 

@@ -1,5 +1,5 @@
 import { TrendingUp, TrendingDown } from 'lucide-react';
-import { CryptoAsset } from '../types/portfolio';
+import type { CryptoAsset } from '../types/portfolio';
 
 interface AssetsListProps {
   assets: CryptoAsset[];
