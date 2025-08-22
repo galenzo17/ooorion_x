@@ -40,43 +40,46 @@ export const PortfolioChart = ({ data, isLoading }: PortfolioChartProps) => {
         <h2 className="text-lg font-semibold text-gray-900">Portfolio Performance (30 Days)</h2>
       </div>
       <div className="p-6">
-        <div style={{ width: '100%', height: 300 }}>
-          <ResponsiveContainer>
-            <LineChart data={chartData}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
-              <XAxis 
-                dataKey="date" 
-                stroke="#6b7280"
-                fontSize={12}
-                tickLine={false}
-              />
-              <YAxis 
-                stroke="#6b7280"
-                fontSize={12}
-                tickLine={false}
-                tickFormatter={formatValue}
-              />
-              <Tooltip 
-                formatter={(value: number) => [formatValue(value), 'Portfolio Value']}
-                labelStyle={{ color: '#374151' }}
-                contentStyle={{
-                  backgroundColor: '#fff',
-                  border: '1px solid #e5e7eb',
-                  borderRadius: '6px',
-                  boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
-                }}
-              />
-              <Line 
-                type="monotone" 
-                dataKey="value" 
-                stroke="#3b82f6" 
-                strokeWidth={2}
-                dot={false}
-                activeDot={{ r: 4, fill: '#3b82f6' }}
-              />
-            </LineChart>
-          </ResponsiveContainer>
-        </div>
+        <ResponsiveContainer width="100%" height="100%">
+          <LineChart data={chartData}>
+            <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
+            <XAxis 
+              dataKey="date" 
+              stroke="#6b7280"
+              fontSize={10}
+              tickLine={false}
+              axisLine={false}
+              interval="preserveStartEnd"
+            />
+            <YAxis 
+              stroke="#6b7280"
+              fontSize={10}
+              tickLine={false}
+              axisLine={false}
+              tickFormatter={formatValue}
+              width={60}
+            />
+            <Tooltip 
+              formatter={(value: number) => [formatValue(value), 'Valor']}
+              labelStyle={{ color: '#374151' }}
+              contentStyle={{
+                backgroundColor: '#fff',
+                border: '1px solid #e5e7eb',
+                borderRadius: '6px',
+                boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
+                fontSize: '12px',
+              }}
+            />
+            <Line 
+              type="monotone" 
+              dataKey="value" 
+              stroke="#3b82f6" 
+              strokeWidth={2}
+              dot={false}
+              activeDot={{ r: 3, fill: '#3b82f6' }}
+            />
+          </LineChart>
+        </ResponsiveContainer>
       </div>
     </div>
   );
