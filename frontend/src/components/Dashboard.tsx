@@ -9,7 +9,7 @@ export const Dashboard = () => {
 
   if (error) {
     return (
-      <div className="min-h-screen bg-gray-50">
+      <div className="min-h-screen bg-gray-100">
         <Header />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="text-center">
@@ -22,7 +22,7 @@ export const Dashboard = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-100">
       <Header />
       
       <main className="w-full px-8 py-10">
@@ -38,8 +38,8 @@ export const Dashboard = () => {
 
           {/* Right Column - Crypto List */}
           <div>
-            <div className="bg-white border border-gray-200">
-              <div className="p-6 border-b border-gray-200">
+            <div className="bg-white border border-gray-300">
+              <div className="p-6 border-b border-gray-300">
                 <h3 className="text-xl font-semibold text-gray-900">Tus Criptomonedas</h3>
               </div>
               

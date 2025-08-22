@@ -22,7 +22,7 @@ export const PortfolioOverview = ({ summary, isLoading }: PortfolioOverviewProps
   const isPositive = summary.totalChangePercent24h >= 0;
 
   return (
-    <div className="bg-white border border-gray-200 p-8">
+    <div className="bg-white border border-gray-300 p-8">
       <div className="flex items-center space-x-4 mb-6">
         <div className="w-12 h-12 bg-blue-100 flex items-center justify-center">
           <BarChart3 className="w-6 h-6 text-blue-600" />

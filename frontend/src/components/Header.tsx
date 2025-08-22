@@ -2,7 +2,7 @@ import { User } from 'lucide-react';
 
 export const Header = () => {
   return (
-    <header className="bg-white border-b border-gray-200">
+    <header className="bg-white border-b border-gray-300">
       <div className="w-full px-8">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
