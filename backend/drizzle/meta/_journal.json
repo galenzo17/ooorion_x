@@ -1,0 +1,13 @@
+{
+  "version": "7",
+  "dialect": "sqlite",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "6",
+      "when": 1755828779063,
+      "tag": "0000_concerned_norrin_radd",
+      "breakpoints": true
+    }
+  ]
+}

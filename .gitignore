@@ -49,6 +49,8 @@ Thumbs.db
 # Database
 *.sqlite
 *.db
+data/
+*/data/
 
 # Cache
 .cache/

@@ -7,25 +7,25 @@ export class PortfolioController {
   constructor(private readonly portfolioService: PortfolioService) {}
 
   @Get()
-  getPortfolio(): PortfolioData {
+  async getPortfolio(): Promise<PortfolioData> {
     return this.portfolioService.getPortfolioData();
   }
 
   @Get('summary')
-  getPortfolioSummary() {
-    const data = this.portfolioService.getPortfolioData();
+  async getPortfolioSummary() {
+    const data = await this.portfolioService.getPortfolioData();
     return data.summary;
   }
 
   @Get('assets')
-  getAssets() {
-    const data = this.portfolioService.getPortfolioData();
+  async getAssets() {
+    const data = await this.portfolioService.getPortfolioData();
     return data.assets;
   }
 
   @Get('history')
-  getPriceHistory() {
-    const data = this.portfolioService.getPortfolioData();
+  async getPriceHistory() {
+    const data = await this.portfolioService.getPortfolioData();
     return data.priceHistory;
   }
 }

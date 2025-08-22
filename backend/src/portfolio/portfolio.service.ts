@@ -1,70 +1,33 @@
 import { Injectable } from '@nestjs/common';
 import { CryptoAsset, PortfolioData, PortfolioSummary, PriceHistoryPoint } from './portfolio.interface';
+import { DatabaseService } from '../database/database.service';
+import { assets, priceHistory, portfolioSnapshots } from '../database/schema';
+import { desc, sql } from 'drizzle-orm';
 
 @Injectable()
 export class PortfolioService {
-  private generateMockAssets(): CryptoAsset[] {
-    const mockAssets: CryptoAsset[] = [
-      {
-        symbol: 'BTC',
-        name: 'Bitcoin',
-        balance: 0.5,
-        price: 67500,
-        value: 33750,
-        change24h: 1250,
-        changePercent24h: 1.85,
-      },
-      {
-        symbol: 'ETH',
-        name: 'Ethereum',
-        balance: 2.3,
-        price: 3850,
-        value: 8855,
-        change24h: -120,
-        changePercent24h: -1.35,
-      },
-      {
-        symbol: 'BNB',
-        name: 'Binance Coin',
-        balance: 5.7,
-        price: 620,
-        value: 3534,
-        change24h: 85,
-        changePercent24h: 2.46,
-      },
-      {
-        symbol: 'SOL',
-        name: 'Solana',
-        balance: 12.4,
-        price: 180,
-        value: 2232,
-        change24h: -45,
-        changePercent24h: -1.98,
-      },
-      {
-        symbol: 'ADA',
-        name: 'Cardano',
-        balance: 850,
-        price: 0.85,
-        value: 722.5,
-        change24h: 12.5,
-        changePercent24h: 1.76,
-      },
-      {
-        symbol: 'DOT',
-        name: 'Polkadot',
-        balance: 45,
-        price: 12.3,
-        value: 553.5,
-        change24h: -8.2,
-        changePercent24h: -1.46,
-      },
-    ];
+  constructor(private readonly databaseService: DatabaseService) {}
 
-    return mockAssets;
+  private async getAssetsFromDb(): Promise<CryptoAsset[]> {
+    const dbAssets = await this.databaseService.db
+      .select()
+      .from(assets)
+      .orderBy(desc(assets.value));
+
+    return dbAssets.map(asset => ({
+      symbol: asset.symbol,
+      name: asset.name,
+      balance: asset.balance,
+      price: asset.price,
+      value: asset.value,
+      change24h: asset.change24h,
+      changePercent24h: asset.changePercent24h,
+    }));
   }
 
-  private generatePriceHistory(): PriceHistoryPoint[] {
+  private async generatePriceHistory(): Promise<PriceHistoryPoint[]> {
+    // For now, still generate mock history
+    // In production, this would query the priceHistory table
     const history: PriceHistoryPoint[] = [];
     const now = new Date();
     const startValue = 45000;
@@ -86,13 +49,15 @@ export class PortfolioService {
     return history;
   }
 
-  getPortfolioData(): PortfolioData {
-    const assets = this.generateMockAssets();
-    const priceHistory = this.generatePriceHistory();
+  async getPortfolioData(): Promise<PortfolioData> {
+    const assets = await this.getAssetsFromDb();
+    const priceHistory = await this.generatePriceHistory();
     
     const totalValue = assets.reduce((sum, asset) => sum + asset.value, 0);
     const totalChange24h = assets.reduce((sum, asset) => sum + asset.change24h, 0);
-    const totalChangePercent24h = (totalChange24h / (totalValue - totalChange24h)) * 100;
+    const totalChangePercent24h = totalValue > 0 
+      ? (totalChange24h / (totalValue - totalChange24h)) * 100 
+      : 0;
     
     const summary: PortfolioSummary = {
       totalValue: Math.round(totalValue * 100) / 100,
@@ -101,10 +66,61 @@ export class PortfolioService {
       totalAssets: assets.length,
     };
 
+    // Optionally save snapshot to database
+    await this.savePortfolioSnapshot(summary);
+
     return {
       summary,
       assets,
       priceHistory,
     };
+  }
+
+  private async savePortfolioSnapshot(summary: PortfolioSummary) {
+    try {
+      await this.databaseService.db.insert(portfolioSnapshots).values({
+        totalValue: summary.totalValue,
+        totalChange24h: summary.totalChange24h,
+        totalChangePercent24h: summary.totalChangePercent24h,
+        totalAssets: summary.totalAssets,
+      });
+    } catch (error) {
+      console.error('Error saving portfolio snapshot:', error);
+    }
+  }
+
+  async updateAssetPrice(symbol: string, newPrice: number) {
+    const asset = await this.databaseService.db
+      .select()
+      .from(assets)
+      .where(sql`${assets.symbol} = ${symbol}`)
+      .limit(1);
+
+    if (asset.length > 0) {
+      const currentAsset = asset[0];
+      const newValue = currentAsset.balance * newPrice;
+      const change24h = newValue - currentAsset.value;
+      const changePercent24h = currentAsset.value > 0 
+        ? (change24h / currentAsset.value) * 100 
+        : 0;
+
+      await this.databaseService.db
+        .update(assets)
+        .set({
+          price: newPrice,
+          value: newValue,
+          change24h,
+          changePercent24h,
+          updatedAt: new Date().toISOString(),
+        })
+        .where(sql`${assets.symbol} = ${symbol}`);
+
+      // Save price history
+      await this.databaseService.db.insert(priceHistory).values({
+        assetId: currentAsset.id,
+        price: newPrice,
+        totalValue: newValue,
+      });
+    }
   }
 }
