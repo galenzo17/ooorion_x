@@ -1,5 +1,6 @@
 import { usePortfolio } from '../hooks/usePortfolio';
 import { Header } from './Header';
+import { CryptoCarousel } from './CryptoCarousel';
 import { PortfolioOverview } from './PortfolioOverview';
 import { CryptoListItem } from './CryptoListItem';
 import { PortfolioChart } from './PortfolioChart';
@@ -11,6 +12,7 @@ export const Dashboard = () => {
     return (
       <div className="min-h-screen bg-gray-100">
         <Header />
+        <CryptoCarousel />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="text-center">
             <h2 className="text-xl font-semibold text-gray-900 mb-2">Error al cargar el portfolio</h2>
@@ -24,6 +26,7 @@ export const Dashboard = () => {
   return (
     <div className="min-h-screen bg-gray-100">
       <Header />
+      <CryptoCarousel />
       
       <main className="w-full px-8 py-10">
         {/* Main Content - 2 Column Layout like OrionX */}
