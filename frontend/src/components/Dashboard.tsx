@@ -39,14 +39,14 @@ export const Dashboard = () => {
           {/* Right Column - Crypto List */}
           <div>
             <div className="bg-white border border-gray-200">
-              <div className="p-4 border-b border-gray-200">
+              <div className="p-6 border-b border-gray-200">
                 <h3 className="text-lg font-medium text-gray-900">Tus Criptomonedas</h3>
               </div>
               
               {isLoading ? (
                 <div className="divide-y divide-gray-100">
                   {Array.from({ length: 6 }).map((_, i) => (
-                    <div key={i} className="p-4 animate-pulse">
+                    <div key={i} className="p-6 animate-pulse">
                       <div className="flex items-center justify-between">
                         <div className="flex items-center space-x-3">
                           <div className="w-8 h-8 bg-gray-200 rounded-full"></div>

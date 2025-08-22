@@ -32,10 +32,10 @@ export const CryptoListItem = ({ asset }: CryptoListItemProps) => {
   const isPositive = asset.changePercent24h >= 0;
 
   return (
-    <div className="grid grid-cols-2 gap-4 p-4 border-b border-gray-100 last:border-b-0">
+    <div className="grid grid-cols-2 gap-6 p-6 border-b border-gray-100 last:border-b-0">
       {/* Left Column */}
-      <div className="flex items-center space-x-3">
-        <div className={`w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-sm font-bold ${getCryptoColor(asset.symbol)}`}>
+      <div className="flex items-center space-x-4">
+        <div className={`w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-base font-bold ${getCryptoColor(asset.symbol)}`}>
           {getCryptoIcon(asset.symbol)}
         </div>
         <div>
