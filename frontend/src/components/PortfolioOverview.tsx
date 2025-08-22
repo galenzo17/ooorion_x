@@ -22,10 +22,10 @@ export const PortfolioOverview = ({ summary, isLoading }: PortfolioOverviewProps
   const isPositive = summary.totalChangePercent24h >= 0;
 
   return (
-    <div className="bg-white border border-gray-200 p-6">
-      <div className="flex items-center space-x-3 mb-4">
-        <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
-          <BarChart3 className="w-5 h-5 text-blue-600" />
+    <div className="bg-white border border-gray-200 p-8">
+      <div className="flex items-center space-x-4 mb-6">
+        <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+          <BarChart3 className="w-6 h-6 text-blue-600" />
         </div>
         <div>
           <h2 className="text-lg font-medium text-gray-900">Mi Resumen</h2>
@@ -33,7 +33,7 @@ export const PortfolioOverview = ({ summary, isLoading }: PortfolioOverviewProps
         </div>
       </div>
       
-      <div className="space-y-3">
+      <div className="space-y-4">
         <div className="flex items-center justify-between">
           <span className="text-sm text-gray-600">Valor Total</span>
           <span className="text-xl font-semibold text-gray-900">
