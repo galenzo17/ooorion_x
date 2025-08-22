@@ -26,18 +26,18 @@ export const Dashboard = () => {
       <Header />
       
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Portfolio Overview Section */}
-        <div className="mb-8">
-          <PortfolioOverview 
-            summary={portfolioData?.summary} 
-            isLoading={isLoading} 
-          />
-        </div>
+        {/* Main Content - 2 Column Layout like OrionX */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          {/* Left Column - Portfolio Overview */}
+          <div>
+            <PortfolioOverview 
+              summary={portfolioData?.summary} 
+              isLoading={isLoading} 
+            />
+          </div>
 
-        {/* Main Content Grid */}
-        <div className="grid grid-cols-1 xl:grid-cols-3 gap-8 mb-8">
-          {/* Crypto List Section */}
-          <div className="xl:col-span-2">
+          {/* Right Column - Crypto List */}
+          <div>
             <div className="bg-white border border-gray-200">
               <div className="p-4 border-b border-gray-200">
                 <h3 className="text-lg font-medium text-gray-900">Tus Criptomonedas</h3>
@@ -70,19 +70,6 @@ export const Dashboard = () => {
                   ))}
                 </div>
               )}
-            </div>
-          </div>
-
-          {/* Chart Section - Sidebar */}
-          <div className="xl:col-span-1">
-            <div className="bg-white rounded-xl p-6 shadow-sm border h-full">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">Rendimiento</h3>
-              <div className="h-64">
-                <PortfolioChart 
-                  data={portfolioData?.priceHistory || []} 
-                  isLoading={isLoading} 
-                />
-              </div>
             </div>
           </div>
         </div>
