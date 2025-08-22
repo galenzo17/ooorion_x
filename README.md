@@ -24,7 +24,7 @@ A modern crypto exchange dashboard built with React and NestJS.
 ## 🚀 Getting Started
 
 ### Prerequisites
-- Node.js 20+
+- Node.js 20.19+ or 22.12+ (use `nvm use 22.18.0` or later)
 - Docker and Docker Compose
 - npm or yarn
 
@@ -41,14 +41,19 @@ cd ooorion_x
 docker-compose up -d
 ```
 
-3. Install and run the backend:
+3. Ensure you're using the correct Node.js version:
+```bash
+nvm use 22.18.0  # or later version
+```
+
+4. Install and run the backend:
 ```bash
 cd backend
 npm install
 npm run start:dev
 ```
 
-4. Install and run the frontend:
+5. Install and run the frontend:
 ```bash
 cd frontend
 npm install
@@ -72,7 +77,7 @@ ooorion_x/
 ## 🔧 Development
 
 - Frontend development server: `http://localhost:5173`
-- Backend API server: `http://localhost:3000`
+- Backend API server: `http://localhost:3001`
 - PostgreSQL: `localhost:5432`
 - Redis: `localhost:6379`
 
