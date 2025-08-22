@@ -1,6 +1,6 @@
 import { Controller, Get } from '@nestjs/common';
 import { PortfolioService } from './portfolio.service';
-import { PortfolioData } from './portfolio.interface';
+import type { PortfolioData } from './portfolio.interface';
 
 @Controller('portfolio')
 export class PortfolioController {
